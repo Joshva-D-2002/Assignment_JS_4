@@ -159,7 +159,7 @@ if(localStorage.getItem('user')){
 }
 
 
-// Create a form with a text field which when submitted, will change the tab title to whatever is entered, limit the field to 50 characters, otherwise show error message, stay on the same page when submitted(it shouldn't refresh).
+// 4.Create a form with a text field which when submitted, will change the tab title to whatever is entered, limit the field to 50 characters, otherwise show error message, stay on the same page when submitted(it shouldn't refresh).
 
 const form2 = document.getElementById('form2');
 const title = document.getElementById("title");
@@ -179,7 +179,7 @@ submit2.addEventListener("click", function (event) {
 });
 
 
-// When control+enter key is pressed show an alert message. 
+// 5.When control+enter key is pressed show an alert message. 
 
 document.addEventListener("keydown", function (event) {
   if (event.ctrlKey && event.key === "Enter") {
