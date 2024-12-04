@@ -1,0 +1,28 @@
+*{
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+}
+.ctn-2{
+    height: 150px;
+    width: 375px;
+    padding-top: 10px;
+}
+#container-1{
+    background-color: red;
+}
+#details{
+    text-align: center;
+}
+button{
+    padding: 10px;
+}
+.ctn-1{
+    width: 375px;
+    height: 50px;
+    padding: 15px;
+    background-color: rgba(0, 170, 255, 1);
+}
+.err{
+    color: red;
+}

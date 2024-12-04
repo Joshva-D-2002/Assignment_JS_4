@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 4</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="container-1" class="ctn-2">
+      <p id="details">
+        Name : Joshva <br />
+        Age : 22 <br />
+        Qualification : B E <br />
+        Year Of PassOut : 2023
+      </p>
+    </div>
+    <button class="buttons" id="btn-hide">Hide</button>
+    <button class="buttons" id="btn-bgcolor">Change Bacground color</button>
+    <button class="buttons" id="btn-details">Hide Details</button>
+    <div id="container-2" class="ctn-1">Select a Number Below</div>
+    <label for="select">Select a Number :</label>
+    <select name="Numbers" id="select">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <div id="container-3" class="ctn-1"></div>
+
+    <div id="btns-container" class="ctn-2"></div>
+
+    <form action="" id="form1">
+      <label for="name">Name : </label>
+      <input type="text" name="name" id="name" />
+      <br />
+      <div id="nameErr" class="err"></div>
+      <br />
+      <label for="phoneNo">Phone Number : </label>
+      <input type="text" name="phoneNo" id="phoneNo" />
+      <br />
+      <div id="phoneErr" class="err"></div>
+      <br />
+      <label for="place">Place : </label>
+      <input type="text" name="place" id="place" />
+      <br />
+      <div id="placeErr" class="err"></div>
+      <br />
+      <label for="company">Comapny Name :</label>
+      <input type="text" name="company" id="company" />
+      <br />
+      <div id="companyErr" class="err"></div>
+      <br />
+      <label for="pin">Pin code :</label>
+      <input type="text" name="pin" id="pin" />
+      <br />
+      <div id="pinErr" class="err"></div>
+      <button id="submit1" type="submit">Submit</button>
+      <button id="populate">Populate</button>
+    </form>
+    <form action="" id="form2">
+      <label for="title">Enter Title : </label>
+      <input type="text" id="title" />
+      <br />
+      <div id="titleErr" class="err"></div>
+      <button id="submit2" type="submit">Submit</button>
+    </form>
+
+    <script src="js/assignment4.js"></script>
+  </body>
+</html>
