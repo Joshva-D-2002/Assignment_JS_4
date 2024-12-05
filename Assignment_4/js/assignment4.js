@@ -122,30 +122,37 @@ btnsubmit.addEventListener("click", function (event) {
   function isNum(value) {
     return /^[0-9\s]+$/.test(value);
   }
+  let isValid = true;
   if (nameInput.value === "") {
     nameErr.textContent = "Name is Required";
+    isValid = false;
   }
   if (phoneNo.value === "") {
     phoneErr.textContent = "Phone Number is Required";
-  }
-  else if (!isNum(phoneNo.value)) {
+    isValid = false;
+  } else if (!isNum(phoneNo.value)) {
     phoneErr.textContent = "Only Numbers are allowed";
-  }
-  else if (phoneNo.value.length < 10) {
+    isValid = false;
+  } else if (phoneNo.value.length < 10) {
     phoneErr.textContent = "Phone Number must contain atleast 10 numbers";
+    isValid = false;
   }
   if (place.value === "") {
     placeErr.textContent = "Place is Required";
+    isValid = false;
   }
   if (company.value === "") {
     companyErr.textContent = "Company Name Required";
+    isValid = false;
   }
   if (pin.value === "") {
     pinErr.textContent = "Pin Code is Required";
-  }
-  else if (!isNum(pin.value)) {
+    isValid = false;
+  } else if (!isNum(pin.value)) {
     pinErr.textContent = "Only Numbers are allowed";
-  } else {
+    isValid = false;
+  }
+  if (isValid) {
     const user = {
       name: nameInput.value,
       phoneNo: phoneNo.value,
@@ -155,11 +162,11 @@ btnsubmit.addEventListener("click", function (event) {
     };
     localStorage.setItem("user", JSON.stringify(user));
     form1.reset();
+    populateBtn.disabled = false;
   }
 });
 
 if (localStorage.getItem("user")) {
-  populateBtn.disabled = false;
   populateBtn.addEventListener("click", function (event) {
     event.preventDefault();
     const localUser = JSON.parse(localStorage.getItem("user"));
