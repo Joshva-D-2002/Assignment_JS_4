@@ -38,7 +38,6 @@ hideDetails.addEventListener("click", function () {
   }
 });
 
-
 // 2.Create a select box with numbers 1 to 10,  when selected 9, you should change the selection to 10 and show a message that "9 is fully occupied please select another number", when selected any number other than 9 it should show a message as "you selected 'particular number' " in a div, on hovering the div it should change the background color of the div into a highlighting shade, while the mouse pointer leaves the message area the background color should go back to as before (don't use CSS to attain the hovering functionality)
 
 const container2 = document.getElementById("container-2");
@@ -63,10 +62,20 @@ container2.addEventListener("mouseout", function () {
 const container3 = document.getElementById("container-3");
 const btnsContainer = document.getElementById("btns-container");
 
+// 3.Consider an array with name of 10 programming languages, make 10 buttons by iterating this array, when clicked on each button the name of the programming language should be shown in a corresponding div.
 
-// 3.Consider an array with name of 10 programming languages, make 10 buttons by iterating this array, when clicked on each button the name of the programming language should be shown in a corresponding div. 
-
-const arr = ["Html","CSS","php","java","c","c++","python","javascript","ruby","c#",];
+const arr = [
+  "Html",
+  "CSS",
+  "php",
+  "java",
+  "c",
+  "c++",
+  "python",
+  "javascript",
+  "ruby",
+  "c#",
+];
 
 arr.forEach((element) => {
   const btn = document.createElement("button");
@@ -77,29 +86,27 @@ arr.forEach((element) => {
   });
 });
 
-
 // 4.Make a form with fields name, phone number, place, company name, pin code
 //      a.if any of the field is empty on submitting it should show corresponding error messages on below of all the required fields.
 //      b.pin code and mobile number fields should not be submitted with non-integer values, if so, then show an error msg stating only numbers are allowed.
-//      c.Minimum length of phone number should be 10, otherwise show corresponding error msg below the mobile no. field. 
+//      c.Minimum length of phone number should be 10, otherwise show corresponding error msg below the mobile no. field.
 //      d.On submit of the form, store the details in the local storage and clear the form. (it should stay on the same page don't refresh the page).
 //      e.Make a prepopulate button, which when clicked will populate the form with values in the local storage if it exists, otherwise the button will be disabled.
 
-const form1 = document.getElementById('form1');
+const form1 = document.getElementById("form1");
 const nameInput = document.getElementById("name");
 const phoneNo = document.getElementById("phoneNo");
 const place = document.getElementById("place");
 const company = document.getElementById("company");
 const pin = document.getElementById("pin");
 const btnsubmit = document.getElementById("submit1");
-const populateBtn = document.getElementById('populate');
+const populateBtn = document.getElementById("populate");
 
 const nameErr = document.getElementById("nameErr");
 const phoneErr = document.getElementById("phoneErr");
 const placeErr = document.getElementById("placeErr");
 const companyErr = document.getElementById("companyErr");
 const pinErr = document.getElementById("pinErr");
-
 
 populateBtn.disabled = true;
 
@@ -115,53 +122,58 @@ btnsubmit.addEventListener("click", function (event) {
   function isNum(value) {
     return /^[0-9\s]+$/.test(value);
   }
-
   if (nameInput.value === "") {
     nameErr.textContent = "Name is Required";
-  } else if (phoneNo.value === "") {
+  }
+  if (phoneNo.value === "") {
     phoneErr.textContent = "Phone Number is Required";
-  } else if (place.value === "") {
-    placeErr.textContent = "Place is Required";
-  } else if (company.value === "") {
-    companyErr.textContent = "Company Name Required";
-  } else if (pin.value === "") {
-    pinErr.textContent = "Pin Code is Required";
-  } else if (!isNum(phoneNo.value)) {
+  }
+  else if (!isNum(phoneNo.value)) {
     phoneErr.textContent = "Only Numbers are allowed";
-  } else if (phoneNo.value.length < 10) {
+  }
+  else if (phoneNo.value.length < 10) {
     phoneErr.textContent = "Phone Number must contain atleast 10 numbers";
-  } else if (!isNum(pin.value)) {
+  }
+  if (place.value === "") {
+    placeErr.textContent = "Place is Required";
+  }
+  if (company.value === "") {
+    companyErr.textContent = "Company Name Required";
+  }
+  if (pin.value === "") {
+    pinErr.textContent = "Pin Code is Required";
+  }
+  else if (!isNum(pin.value)) {
     pinErr.textContent = "Only Numbers are allowed";
   } else {
     const user = {
-        name : nameInput.value,
-        phoneNo : phoneNo.value,
-        place : place.value,
-        company : company.value,
-        pinNo : pin.value
-    }
-    localStorage.setItem('user', JSON.stringify(user));
+      name: nameInput.value,
+      phoneNo: phoneNo.value,
+      place: place.value,
+      company: company.value,
+      pinNo: pin.value,
+    };
+    localStorage.setItem("user", JSON.stringify(user));
     form1.reset();
   }
-})
+});
 
-if(localStorage.getItem('user')){
-    populateBtn.disabled = false;
-    populateBtn.addEventListener('click', function(event){
-        event.preventDefault();
-        const localUser = JSON.parse(localStorage.getItem('user'));
-        nameInput.value = localUser.name;
-        phoneNo.value = localUser.phoneNo;
-        place.value = localUser.place;
-        company.value = localUser.company;
-        pin.value = localUser.pinNo;
-    })
+if (localStorage.getItem("user")) {
+  populateBtn.disabled = false;
+  populateBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    const localUser = JSON.parse(localStorage.getItem("user"));
+    nameInput.value = localUser.name;
+    phoneNo.value = localUser.phoneNo;
+    place.value = localUser.place;
+    company.value = localUser.company;
+    pin.value = localUser.pinNo;
+  });
 }
-
 
 // 4.Create a form with a text field which when submitted, will change the tab title to whatever is entered, limit the field to 50 characters, otherwise show error message, stay on the same page when submitted(it shouldn't refresh).
 
-const form2 = document.getElementById('form2');
+const form2 = document.getElementById("form2");
 const title = document.getElementById("title");
 const titleErr = document.getElementById("titleErr");
 const submit2 = document.getElementById("submit2");
@@ -178,8 +190,7 @@ submit2.addEventListener("click", function (event) {
   }
 });
 
-
-// 5.When control+enter key is pressed show an alert message. 
+// 5.When control+enter key is pressed show an alert message.
 
 document.addEventListener("keydown", function (event) {
   if (event.ctrlKey && event.key === "Enter") {
