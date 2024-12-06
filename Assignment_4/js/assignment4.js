@@ -94,11 +94,6 @@ arr.forEach((element) => {
 //      e.Make a prepopulate button, which when clicked will populate the form with values in the local storage if it exists, otherwise the button will be disabled.
 
 const form1 = document.getElementById("form1");
-const nameInput = document.getElementById("name");
-const phoneNo = document.getElementById("phoneNo");
-const place = document.getElementById("place");
-const company = document.getElementById("company");
-const pin = document.getElementById("pin");
 const btnsubmit = document.getElementById("submit1");
 const populateBtn = document.getElementById("populate");
 
@@ -113,6 +108,12 @@ populateBtn.disabled = true;
 btnsubmit.addEventListener("click", function (event) {
   event.preventDefault();
 
+  const nameInput = document.getElementById("name").value.trim();
+  const phoneNo = document.getElementById("phoneNo").value.trim();
+  const place = document.getElementById("place").value.trim();
+  const company = document.getElementById("company").value.trim();
+  const pin = document.getElementById("pin").value.trim();
+
   nameErr.textContent = "";
   phoneErr.textContent = "";
   placeErr.textContent = "";
@@ -123,42 +124,42 @@ btnsubmit.addEventListener("click", function (event) {
     return /^[0-9\s]+$/.test(value);
   }
   let isValid = true;
-  if (nameInput.value === "") {
+  if (nameInput.length == 0) {
     nameErr.textContent = "Name is Required";
     isValid = false;
   }
-  if (phoneNo.value === "") {
+  if (phoneNo.length == 0) {
     phoneErr.textContent = "Phone Number is Required";
     isValid = false;
-  } else if (!isNum(phoneNo.value)) {
+  } else if (!isNum(phoneNo)) {
     phoneErr.textContent = "Only Numbers are allowed";
     isValid = false;
-  } else if (phoneNo.value.length < 10) {
+  } else if (phoneNo.length < 10) {
     phoneErr.textContent = "Phone Number must contain atleast 10 numbers";
     isValid = false;
   }
-  if (place.value === "") {
+  if (place.length == 0) {
     placeErr.textContent = "Place is Required";
     isValid = false;
   }
-  if (company.value === "") {
+  if (company.length == 0) {
     companyErr.textContent = "Company Name Required";
     isValid = false;
   }
-  if (pin.value === "") {
+  if (pin.length == 0) {
     pinErr.textContent = "Pin Code is Required";
     isValid = false;
-  } else if (!isNum(pin.value)) {
+  } else if (!isNum(pin)) {
     pinErr.textContent = "Only Numbers are allowed";
     isValid = false;
   }
   if (isValid) {
     const user = {
-      name: nameInput.value,
-      phoneNo: phoneNo.value,
-      place: place.value,
-      company: company.value,
-      pinNo: pin.value,
+      name: nameInput,
+      phoneNo: phoneNo,
+      place: place,
+      company: company,
+      pinNo: pin,
     };
     localStorage.setItem("user", JSON.stringify(user));
     form1.reset();
@@ -170,11 +171,11 @@ if (localStorage.getItem("user")) {
   populateBtn.addEventListener("click", function (event) {
     event.preventDefault();
     const localUser = JSON.parse(localStorage.getItem("user"));
-    nameInput.value = localUser.name;
-    phoneNo.value = localUser.phoneNo;
-    place.value = localUser.place;
-    company.value = localUser.company;
-    pin.value = localUser.pinNo;
+    document.getElementById("name").value = localUser.name;
+    document.getElementById("phoneNo").value = localUser.phoneNo;
+    document.getElementById("place").value = localUser.place;
+    document.getElementById("company").value = localUser.company;
+    document.getElementById("pin").value = localUser.pinNo;
   });
 }
 
